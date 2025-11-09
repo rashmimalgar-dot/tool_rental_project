@@ -1,0 +1,97 @@
+/* src/Dashboard.css */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f5f3f0; /* Soft cream */
+  color: #2f1b07; /* Deep brown text */
+}
+
+/* Top Panel */
+.top-panel {
+  width: 100%;
+  background-color: #3E2F1C; /* Official brown */
+  display: flex;
+  justify-content: center;
+gap: 40px;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 900;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+/* Navigation Buttons */
+.nav-button {
+  background-color: transparent;
+  border: 2px solid #FFF9F3;
+  color: #FFF9F3;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-button:hover {
+  background-color: #C1A57B; /* Light brown hover */
+  color: #3E2F1C;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  margin-top: 90px; /* Leave space for fixed top bar */
+  height: calc(100vh - 90px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+/* Heading or Title */
+.dashboard-content h1 {
+  color: #3E2F1C;
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Buttons inside Dashboard */
+.dashboard-btn {
+  background-color: #3E2F1C;
+  color: #FFF9F3;
+  border: none;
+  padding: 0.8rem 1.6rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dashboard-btn:hover {
+  background-color: #C1A57B;
+  color: #3E2F1C;
+  transform: scale(1.05);
+}
+
+/* Responsive */
+@media(max-width: 768px) {
+  .top-panel {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-button {
+    width: 90%;
+  }
+}

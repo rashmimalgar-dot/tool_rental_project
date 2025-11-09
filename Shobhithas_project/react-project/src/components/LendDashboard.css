@@ -1,0 +1,300 @@
+/* --- New Styles for Notifications Panel --- */
+
+.notifications-panel {
+  margin-top: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.notifications-panel h3 {
+  margin-bottom: 20px;
+  color: #3e2f1c; /* Dark text */
+  border-bottom: 2px solid #c9a66b; /* Golden underline */
+  padding-bottom: 10px;
+}
+
+.notification-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+.reviews-panel {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  margin-top: 20px;
+}
+.review-card {
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.review-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.review-modal-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 400px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.view-reviews-btn {
+  background-color: #C9A66B;
+  color: white;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+/* === Button Group Layout === */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* === Base Button Style === */
+.button-group button {
+  flex: 1;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+}
+
+/* === Edit Button === */
+.edit-btn {
+  background-color: #4CAF50; /* green */
+  color: white;
+}
+
+.edit-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+/* === Remove Button === */
+.remove-btn {
+  background-color: #e74c3c; /* red */
+  color: white;
+}
+
+.remove-btn:hover {
+  background-color: #c0392b;
+  transform: translateY(-2px);
+}
+
+/* === View Reviews Button === */
+.view-reviews-btn {
+  background-color: #f4b400; /* yellow/gold */
+  color: #222;
+}
+
+.view-reviews-btn:hover {
+  background-color: #e09b00;
+  color: white;
+  transform: translateY(-2px);
+}
+
+/* === Optional: Add a shadow to all buttons for subtle depth === */
+.button-group button {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.button-group button:active {
+  transform: scale(0.97);
+}
+/* === Modal Overlay (Dark background) === */
+.edit-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* === Modal Container === */
+.edit-modal-content {
+  background-color: #ffffff;
+  padding: 25px 30px;
+  border-radius: 12px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  animation: fadeInScale 0.3s ease;
+}
+
+/* === Modal Title === */
+.edit-modal-content h3 {
+  margin-bottom: 15px;
+  color: #333;
+  text-align: center;
+  font-size: 1.3rem;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+}
+
+/* === Form Fields === */
+.edit-modal-content input,
+.edit-modal-content textarea,
+.edit-modal-content select {
+  width: 100%;
+  padding: 10px 12px;
+  margin: 8px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Highlight on focus */
+.edit-modal-content input:focus,
+.edit-modal-content textarea:focus,
+.edit-modal-content select:focus {
+  border-color: #4CAF50;
+  box-shadow: 0 0 4px rgba(76, 175, 80, 0.3);
+  outline: none;
+}
+
+/* === Modal Action Buttons === */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.save-btn {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+  background-color: #45a049;
+  transform: translateY(-2px);
+}
+
+.cancel-btn {
+  background-color: #ccc;
+  color: #333;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cancel-btn:hover {
+  background-color: #bbb;
+  transform: translateY(-2px);
+}
+
+/* === Modal Animation === */
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.85);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+
+.view-reviews-btn:hover {
+  background-color: #b18b52;
+}
+
+
+.notification-card strong {
+  color: #3e2f1c;
+}
+
+.notification-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+/* Status colors */
+.status-pending {
+  color: orange;
+  font-weight: bold;
+}
+.status-accepted {
+  color: green;
+  font-weight: bold;
+}
+.status-rejected {
+  color: red;
+  font-weight: bold;
+}
+
+.accept-btn {
+  background-color: #4CAF50; /* Green */
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.reject-btn {
+  background-color: #f44336; /* Red */
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.accept-btn:hover {
+  background-color: #45a049;
+}
+
+.reject-btn:hover {
+  background-color: #e53935;
+}
+
+/* Keep your existing edit modal and tool card styles */

@@ -1,0 +1,148 @@
+/* Full page layout */
+.help-page {
+  display: flex;
+  justify-content: center;  /* horizontal center */
+  align-items: center;      /* vertical center */
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #ffffff, #f9f6f1);
+  padding: 40px 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  transition: background-color 0.3s ease;
+  color: #333;
+  text-align: center;       /* center text inside containers */
+}
+
+/* Container */
+.help-container {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center child elements horizontally */
+  text-align: center;  /* center text inside child elements */
+  animation: fadeInUp 1s ease-out;
+  background-color: #ffffffcc;
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+  gap: 20px;
+}
+
+/* Page Title */
+.help-title {
+  margin-bottom: 25px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  letter-spacing: 1px;
+}
+
+/* Card Sections */
+.card {
+  width: 100%;
+  border: 1px solid #dcd6cc;
+  border-radius: 12px;
+  background: #fff;
+  padding: 25px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+  transition: box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center content inside cards */
+  text-align: center;  /* center text inside cards */
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center heading content */
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+.card h3 span {
+  margin-left: 0; /* remove left margin so text is centered */
+  margin-top: 5px;
+}
+
+/* FAQ Items */
+.faq-item {
+  width: 100%;
+  border: 1px solid #dcd6cc;
+  border-radius: 8px;
+  background: #fdfdfb;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* center FAQ content */
+  text-align: center;  /* center text */
+}
+
+.faq-item:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.06);
+}
+
+.faq-question {
+  width: 100%;
+  display: flex;
+  justify-content: center; /* center the question text */
+  align-items: center;
+  padding: 12px 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: #f9f9f9;
+  color: #333;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.faq-answer {
+  width: 100%;
+  padding: 12px 15px;
+  background: #fff;
+  color: #555;
+  border-top: 1px solid #dcd6cc;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .help-container {
+    max-width: 100%;
+    padding: 25px 20px;
+  }
+
+  .help-title {
+    font-size: 1.6rem;
+  }
+
+  .card h3 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .help-title {
+    font-size: 1.3rem;
+  }
+
+  .card h3 {
+    font-size: 1.1rem;
+  }
+}

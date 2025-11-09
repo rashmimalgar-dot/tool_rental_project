@@ -1,0 +1,232 @@
+/* src/components/SettingsPage.css */
+
+/* Ensure html & body take full height */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #ffffff, #f9f6f1); /* fallback for body */
+}
+
+/* Full Page Layout */
+.settings-page {
+  min-height: 100vh; /* full viewport */
+  width: 100%;
+  background: linear-gradient(135deg, #ffffff, #f9f6f1); /* white + cream */
+  padding: 40px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* vertical center */
+  align-items: center;     /* horizontal center */
+  text-align: center;      /* center text inside */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* Dark Mode */
+.dark-mode .settings-page {
+  background: linear-gradient(135deg, #111827, #1f2937); /* dark gray tones */
+  color: #f3f4f6;
+}
+
+/* Title */
+.settings-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: #333;
+}
+
+.dark-mode .settings-title {
+  color: #f9fafb;
+}
+
+/* List */
+.settings-list {
+  list-style: none;
+  padding: 0;
+  max-width: 600px;
+  margin: 0 auto 50px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  text-align: center; /* center list text */
+}
+
+/* Back Button */
+.back-btn {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 8px 16px;
+  background-color: #2563EB;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.back-btn:hover {
+  background-color: #1E40AF;
+  transform: scale(1.02);
+}
+
+/* Links */
+.settings-link {
+  text-decoration: none;
+  display: block;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 500;
+  background-color: #fff;
+  color: #333;
+  border: 1px solid #e6e2d9;
+  transition: all 0.3s ease;
+  text-align: center; /* center text */
+}
+
+.settings-link:hover {
+  background-color: #f5f0e6;
+  transform: translateX(6px);
+}
+
+/* Dark Mode Links */
+.dark-mode .settings-link {
+  background-color: #374151;
+  color: #f3f4f6;
+  border: 1px solid #4b5563;
+}
+
+.dark-mode .settings-link:hover {
+  background-color: #4b5563;
+}
+
+/* Dark Mode Toggle */
+.settings-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 500;
+  background-color: #fff;
+  border: 1px solid #e6e2d9;
+  text-align: center;
+}
+
+.dark-mode .settings-toggle {
+  background-color: #374151;
+  color: #f3f4f6;
+  border: 1px solid #4b5563;
+}
+
+/* Switch Button */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 26px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 26px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #4cafef;
+}
+
+input:checked + .slider:before {
+  transform: translateX(24px);
+}
+
+/* Sign Out Button */
+.signout-btn {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 14px;
+  background-color: #ff4d4f;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  display: block;
+  text-align: center;
+}
+
+.signout-btn:hover {
+  background-color: #ff7875;
+  transform: scale(1.02);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .settings-title {
+    font-size: 1.6rem;
+  }
+
+  .settings-list {
+    gap: 14px;
+  }
+
+  .settings-link,
+  .settings-toggle {
+    font-size: 0.95rem;
+    padding: 12px 14px;
+  }
+
+  .signout-btn {
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .settings-title {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+  }
+
+  .settings-link,
+  .settings-toggle {
+    font-size: 0.9rem;
+    padding: 10px 12px;
+  }
+
+  .signout-btn {
+    font-size: 14px;
+  }
+}

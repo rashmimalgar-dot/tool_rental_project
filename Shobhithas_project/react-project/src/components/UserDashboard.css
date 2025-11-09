@@ -1,0 +1,315 @@
+/* src/Dashboard.css */
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: "Segoe UI", Arial, sans-serif;
+  color: #2f1b07;
+  background: #f5f3f0; /* subtle neutral background for professional look */
+}
+
+/* Top Navigation Bar */
+.top-panel {
+  width: 100%;
+  background-color: #3E2F1C; /* official brown theme */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.12);
+  font-weight: 600;
+}
+
+/* Logo / Title */
+.top-panel .logo {
+  font-size: 1.6rem;
+  color: #FFF9F3; 
+  letter-spacing: 1px;
+}
+
+/* Navigation Buttons */
+.nav-button {
+  background-color: transparent;
+  color: #FFF9F3;
+  border: 2px solid #FFF9F3;
+  padding: 0.6rem 1.2rem;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 1rem;
+}
+
+.nav-button:hover {
+  background-color: #C1A57B; /* lighter official brown hover */
+  color: #3E2F1C;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+  margin-top: 100px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100vh - 100px);
+}
+
+/* Welcome Banner */
+.welcome-banner {
+  background: #3E2F1C;
+  color: #FFF9F3;
+  padding: 1.2rem 2rem;
+  border-radius: 12px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+}
+
+/* Tool List */
+.tool-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  width: 100%;
+  max-width: 1100px;
+}
+
+/* Tool Card */
+.tool-card {
+  background: #FFF9F3;
+  border: 1px solid #E0DCCB;
+  border-radius: 12px;
+  padding: 25px 20px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.tool-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+}
+
+/* Tool Button */
+.tool-btn {
+  background: #3E2F1C;
+  border: none;
+  padding: 0.7rem 1.4rem;
+  margin-top: 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  color: #FFF9F3;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.tool-btn:hover {
+  background: #C1A57B;
+  transform: scale(1.05);
+}
+
+/* Notifications Panel */
+.notifications-panel {
+  margin-top: 60px;
+  padding-top: 25px;
+  width: 90%;
+  max-width: 950px;
+}
+
+.notifications-panel h2 {
+  text-align: left;
+  margin-bottom: 20px;
+  font-size: 1.3rem;
+  color: #3E2F1C;
+  font-weight: 600;
+}
+
+/* Notification Card */
+.notification-card {
+  border: 1px solid #E0DCCB;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #FFF9F3;
+  box-shadow: 0 3px 8px rgba(0,0,0,0.08);
+  transition: transform 0.2s ease;
+  text-align: left;
+}
+
+.notification-card:hover {
+  transform: scale(1.02);
+}
+
+/* Notification Actions */
+.notification-actions {
+  margin-top: 12px;
+  display: flex;
+  gap: 12px;
+}
+
+/* Accept / Reject Buttons */
+.accept-btn,
+.reject-btn {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.accept-btn {
+  background-color: #16A34A; /* professional green */
+  color: white;
+}
+
+.accept-btn:hover {
+  background-color: #15803D;
+}
+
+.reject-btn {
+  background-color: #DC2626; /* professional red */
+  color: white;
+}
+
+.reject-btn:hover {
+  background-color: #B91C1C;
+}
+
+/* Responsive Tweaks */
+@media(max-width: 768px) {
+  .tool-list {
+    grid-template-columns: 1fr;
+  }
+
+  .top-panel {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+/* ============================= */
+/* 📋 Borrowed Tools Section     */
+/* ============================= */
+
+/* Borrowed Tools Button (in nav bar) */
+.nav-button.borrowed-tools {
+  background-color: #C1A57B; /* warm brown-gold */
+  border-color: #C1A57B;
+  color: #3E2F1C;
+  font-weight: 600;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav-button.borrowed-tools:hover {
+  background-color: #E0C097;
+  transform: scale(1.05);
+}
+
+/* Borrowed Tools Page Layout */
+.borrowed-tools-container {
+  margin-top: 120px;
+  padding: 2rem;
+  text-align: center;
+}
+
+.borrowed-tools-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #3E2F1C;
+  margin-bottom: 2rem;
+}
+
+.borrowed-tools-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 28px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Borrowed Tool Card */
+.borrowed-tool-card {
+  background: #FFF9F3;
+  border: 1px solid #E0DCCB;
+  border-radius: 12px;
+  padding: 24px 18px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  text-align: center;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.borrowed-tool-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12);
+}
+
+.borrowed-tool-card h3 {
+  color: #3E2F1C;
+  margin-bottom: 0.8rem;
+}
+
+.borrowed-tool-card p {
+  color: #5A4632;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* Buttons for returning or reviewing tools */
+.return-btn,
+.review-btn {
+  background-color: #3E2F1C;
+  color: #FFF9F3;
+  border: none;
+  border-radius: 8px;
+  padding: 0.6rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 0.3rem;
+}
+
+.return-btn:hover,
+.review-btn:hover {
+  background-color: #C1A57B;
+  color: #3E2F1C;
+  transform: scale(1.05);
+}
+
+/* Review form modal (optional future feature) */
+.review-modal {
+  background: rgba(0, 0, 0, 0.45);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.review-modal-content {
+  background: #FFF9F3;
+  border-radius: 10px;
+  padding: 2rem;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+

@@ -1,0 +1,154 @@
+/* Full page layout */
+.signup-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: linear-gradient(135deg, #ffffff, #f9f6f1); /* light white + cream */
+  padding: 40px 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  transition: background-color 0.3s ease;
+}
+
+/* Content wrapper */
+.signup-container {
+  width: 100%;
+  max-width: 600px;
+  text-align: center;
+  color: #333; /* dark text for readability */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: fadeInUp 1s ease-out;
+  background-color: #ffffffcc; /* subtle white overlay */
+  padding: 30px 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+/* Title */
+.signup-title {
+  margin-bottom: 25px;
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333; /* dark title */
+  letter-spacing: 1px;
+}
+
+/* Form */
+.signup-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Input fields */
+.signup-form .field {
+  display: flex;
+  flex-direction: column;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+.signup-form label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #555; /* darker gray for labels */
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.signup-form input,
+.signup-form textarea {
+  padding: 12px 14px;
+  border: 1px solid #dcd6cc; /* light neutral border */
+  border-radius: 6px;
+  font-size: 1rem;
+  background: #fdfdfb; /* very light cream */
+  color: #333; /* dark text */
+  outline: none;
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.signup-form input:focus,
+.signup-form textarea:focus {
+  border-color: #a3a3a3; /* subtle focus color */
+  box-shadow: 0 0 8px rgba(163, 163, 163, 0.4);
+}
+
+.signup-form textarea {
+  resize: vertical;
+  min-height: 70px;
+}
+
+/* Primary button */
+button.primary {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 6px;
+  background-color: #d1d5df; /* primary blue */
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.3s ease, box-shadow 0.3s;
+}
+
+button.primary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+}
+
+button.primary:active {
+  transform: translateY(0);
+}
+
+/* Login link */
+.login-link {
+  margin-top: 20px;
+  font-size: 0.95rem;
+  color: #555;
+}
+
+.login-link a {
+  color: #2563EB; /* primary blue link */
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.login-link a:hover {
+  color: #1E40AF;
+  text-decoration: underline;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .signup-container {
+    max-width: 100%;
+  }
+
+  .signup-title {
+    font-size: 1.6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-title {
+    font-size: 1.3rem;
+  }
+}

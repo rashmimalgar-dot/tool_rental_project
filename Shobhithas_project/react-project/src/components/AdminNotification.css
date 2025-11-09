@@ -1,0 +1,103 @@
+/* src/AdminNotification.css */
+
+.admin-notification {
+  min-height: 100vh;
+  background-color: #f5f3f0;
+  color: #2f1b07;
+}
+
+/* Top panel same as Admin Dashboard */
+.top-panel {
+  width: 100%;
+  background-color: #3E2F1C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1.2rem;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12);
+}
+
+.logo {
+  font-size: 1.6rem;
+  color: #FFF9F3;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Main content */
+.admin-notification-content {
+  padding: 140px 20px 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* Heading */
+.admin-notification-content h2 {
+  font-size: 1.6rem;
+  margin-bottom: 25px;
+  color: #3E2F1C;
+  font-weight: 700;
+}
+
+/* Form */
+.notification-form {
+  background: #FFF9F3;
+  border-radius: 12px;
+  padding: 35px;
+  width: 100%;
+  max-width: 550px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.notification-form input,
+.notification-form textarea {
+  width: 100%;
+  margin-bottom: 18px;
+  padding: 12px 15px;
+  border: 1px solid #E0DCCB;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  outline: none;
+  transition: 0.2s;
+}
+
+.notification-form input:focus,
+.notification-form textarea:focus {
+  border-color: #C1A57B;
+  box-shadow: 0 0 5px rgba(193, 165, 123, 0.4);
+}
+
+/* Send Button */
+.send-btn {
+  background: #3E2F1C;
+  color: #FFF9F3;
+  border: none;
+  padding: 0.8rem 1.8rem;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.send-btn:hover {
+  background: #C1A57B;
+  color: #3E2F1C;
+}
+
+/* Status message */
+.status {
+  margin-top: 25px;
+  font-weight: 600;
+  color: #16A34A;
+  background: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08);
+}

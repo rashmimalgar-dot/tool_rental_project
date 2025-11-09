@@ -1,0 +1,201 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* Background */
+/* Background */
+/* Background */
+.lp-page {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f5ede3, #d6bfa3); /* light brown gradient */
+  padding: 20px;
+}
+
+
+
+/* Card */
+.lp-card {
+  background: #FFF5E1; /* off-white cream */
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0px 8px 24px rgba(92, 64, 51, 0.15); /* brown shadow */
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  animation: fadeIn 0.6s ease-in-out;
+}
+/* Title */
+.lp-title {
+  font-size: 26px; /* slightly bigger */
+  font-weight: 700; /* bolder */
+  background: linear-gradient(90deg, #A0522D, #D2A679); /* brown gradient text */
+  -webkit-background-clip: text; /* ✅ correct syntax */
+  background-clip: text;
+  -webkit-text-fill-color: transparent; /* makes gradient visible */
+  text-shadow: 1px 1px 2px rgba(160, 82, 45, 0.4); /* soft brown shadow */
+  margin-bottom: 24px;
+  line-height: 1.4;
+  text-align: center; /* center for emphasis */
+}
+
+
+
+/* Form */
+.lp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Input fields */
+.field label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #7F5A3A; /* medium brown */
+  display: block;
+  margin-bottom: 6px;
+  text-align: left;
+}
+
+.field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #C4A484; /* light brown */
+  border-radius: 8px;
+  outline: none;
+  font-size: 15px;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.field input:focus {
+  border-color: #A0522D; /* brown */
+  box-shadow: 0 0 0 3px rgba(160, 82, 45, 0.2); /* brown focus shadow */
+}
+
+/* Password Strength */
+.strength {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 500;
+  text-align: left;
+}
+
+.strength.weak {
+  color: #A0522D; /* brown */
+}
+
+.strength.medium {
+  color: #CD853F; /* peru */
+}
+
+.strength.strong {
+  color: #8B4513; /* saddle brown */
+}
+
+/* Error */
+.error {
+  background: #F5D6D0; /* soft pinkish cream */
+  color: #8B0000; /* dark red-brown */
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-top: -8px;
+  text-align: center;
+}
+
+/* Primary Button */
+button.primary {
+  background: #A0522D; /* brown */
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+}
+
+button.primary:hover {
+  background: #7F4019; /* darker brown */
+  transform: translateY(-2px);
+}
+
+button.primary:active {
+  transform: translateY(0);
+}
+
+/* Forgot Password */
+.forgot {
+  margin-top: 10px;
+  text-align: right;
+}
+
+.link-like {
+  background: none;
+  border: none;
+  color: #2056a1; /* brown */
+  font-size: 14px;
+  cursor: pointer;
+  text-decoration: underline;
+  padding: 0;
+}
+
+.link-like:hover {
+  color: #203ba7; /* darker brown */
+}
+
+/* Signup link */
+.signup {
+  margin-top: 20px;
+  font-size: 14px;
+  color: #2c509f; /* medium brown */
+}
+
+.signup .link-like {
+  font-weight: 600;
+
+}
+/* Login Icon */
+.lp-icon {
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.lp-icon svg {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(92, 64, 51, 0.25);
+  transition: transform 0.3s;
+}
+
+.lp-icon svg:hover {
+  transform: scale(1.1);
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .lp-card {
+    padding: 30px 20px;
+  }
+
+  .lp-title {
+    font-size: 18px;
+  }
+}

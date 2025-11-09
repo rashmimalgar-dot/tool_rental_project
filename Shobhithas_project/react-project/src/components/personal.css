@@ -1,0 +1,61 @@
+.personal-form {
+  max-width: 600px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 40px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+.personal-form h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.personal-form h3 {
+  margin-top: 20px;
+  color: #060c13;
+}
+
+.personal-form label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+.personal-form input,
+.personal-form select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 18px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 15px;
+  box-sizing: border-box;
+}
+
+.submit-btn {
+  width: 100%;
+  background: #5151ee;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.submit-btn:hover {
+  background: #0056b3;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: -12px;
+  margin-bottom: 12px;
+}
