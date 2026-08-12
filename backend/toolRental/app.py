@@ -23,11 +23,14 @@ os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 # ------------------ MySQL Config ------------------
+from dotenv import load_dotenv
+load_dotenv()
+
 db_config = {
-    'user': 'root',
-    'password': 'rashmiMali@864;', 
-    'host': 'localhost',
-    'database': 'toolrental'
+    'user': os.getenv('DB_USER'),
+    'password': os.getenv('DB_PASSWORD'),
+    'host': os.getenv('DB_HOST'),
+    'database': os.getenv('DB_NAME')
 }
 
 def get_db_connection():
@@ -37,9 +40,9 @@ def get_db_connection():
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'collegeac989@gmail.com'
-app.config['MAIL_PASSWORD'] = 'idracxsncvamcuhb' 
-app.config['MAIL_DEFAULT_SENDER'] = 'collegeac989@gmail.com'
+app.config['MAIL_USERNAME'] = os.getenv('MAIL_USERNAME')
+app.config['MAIL_PASSWORD'] = os.getenv('MAIL_PASSWORD')
+app.config['MAIL_DEFAULT_SENDER'] = os.getenv('MAIL_USERNAME')
 
 mail = Mail(app)
 
