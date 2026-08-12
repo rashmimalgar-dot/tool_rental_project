@@ -11,6 +11,10 @@ from datetime import datetime
 import os
 import traceback 
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 # ------------------ Flask App & SocketIO Config ------------------
 app = Flask(__name__)
 # ⭐ Initialize SocketIO with CORS enabled
@@ -27,10 +31,10 @@ from dotenv import load_dotenv
 load_dotenv()
 
 db_config = {
-    'user': os.getenv('DB_USER'),
-    'password': os.getenv('DB_PASSWORD'),
-    'host': os.getenv('DB_HOST'),
-    'database': os.getenv('DB_NAME')
+    'user': 'root',
+    'password': '', 
+    'host': 'localhost',
+    'database': 'toolrental'
 }
 
 def get_db_connection():
@@ -296,7 +300,7 @@ def handle_tool_request(request_id):
         data = request.get_json()
         action = data.get('action') 
         lender_id = data.get('lender_id')
-        custom_message = data.get('message', '')  # ✅ New line
+        custom_message = data.get('message', '')
 
         if not lender_id or action not in ['accept', 'reject']:
             return jsonify({"error": "Invalid action or authentication required"}), 400
@@ -326,19 +330,20 @@ def handle_tool_request(request_id):
             title = "Request Approved! 🎉"
             message = f"Your request for {tool_name} has been approved by the lender."
             if custom_message:
-                message += f" Message from lender: '{custom_message}'"  # ✅ Include custom message
+                message += f" Message from lender: '{custom_message}'"
             notification_type = 'success'
             cursor.execute("UPDATE tools SET availability='unavailable' WHERE item_id=%s", (item_id,)) 
+            # Force update for consistency
+            cursor.execute("UPDATE tool_requests SET status='approved' WHERE request_id=%s", (request_id,))
 
         elif action == 'reject':
             status = 'rejected'
             title = "Request Rejected 😔"
             message = f"Your request for {tool_name} was rejected by the lender."
             if custom_message:
-                message += f" Message from lender: '{custom_message}'"  # ✅ Include custom message
+                message += f" Message from lender: '{custom_message}'"
             notification_type = 'warning'
         
-        # ✅ Save custom message too (if you added lender_message column)
         cursor.execute(
             "UPDATE tool_requests SET status=%s, lender_message=%s WHERE request_id=%s",
             (status, custom_message, request_id)
@@ -364,8 +369,6 @@ def handle_tool_request(request_id):
             "timestamp": datetime.now().isoformat()
         }, room=borrower_room)
 
-        print(f"Emitted real-time notification to room: {borrower_room}")
-        
         return jsonify({"message": f"Request {action}ed. Borrower has been notified."}), 200
 
     except Exception:
@@ -378,7 +381,6 @@ def handle_tool_request(request_id):
             if conn: conn.close()
         except:
             pass
-
 
 @app.route('/get-borrow-requests/<int:lender_id>', methods=['GET'])
 def get_borrow_requests(lender_id):
@@ -412,36 +414,6 @@ def get_borrow_requests(lender_id):
         except:
             pass
 
-@app.route('/handle-borrow-request/<int:request_id>', methods=['PUT'])
-def handle_borrow_request(request_id):
-    data = request.get_json()
-    lender_id = data.get("lender_id")
-    action = data.get("action")
-    custom_message = data.get("message", "")
-
-    if not lender_id or action not in ["accept", "reject"]:
-        return jsonify({"error": "Missing or invalid parameters"}), 400
-
-    status = "approved" if action == "accept" else "rejected"
-
-    conn = get_db_connection()
-    cursor = conn.cursor(dictionary=True)
-
-    try:
-        cursor.execute(
-            "UPDATE tool_requests SET status=%s, lender_message=%s WHERE request_id=%s",
-            (status, custom_message, request_id),
-        )
-        conn.commit()
-        return jsonify({"message": f"Request {status} successfully"}), 200
-
-    except Exception as e:
-        conn.rollback()
-        return jsonify({"error": str(e)}), 500
-
-    finally:
-        cursor.close()
-        conn.close()
 
 @app.route('/mark-returned/<int:request_id>', methods=['PUT'])
 def mark_tool_returned(request_id):
@@ -784,6 +756,14 @@ def signup():
         if not username or not email or not password or not full_name:
             return jsonify({"error": "Username, email, full name, and password are required"}), 400
 
+        # Convert empty strings to None for optional fields
+        phone = phone if phone else None
+        dob = dob if dob else None
+        address = address if address else None
+        city = city if city else None
+        area = area if area else None
+        pincode = pincode if pincode else None
+
         hashed_pw = generate_password_hash(password)
 
         conn = get_db_connection()
@@ -793,20 +773,29 @@ def signup():
         if cursor.fetchone():
             return jsonify({"error": "Email or username already exists"}), 400
 
-        cursor.execute("""
-            INSERT INTO users (username, email, phone, password_hash, full_name, dob, address, city, area, pincode)
-            VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
-        """, (username, email, phone, hashed_pw, full_name, dob, address, city, area, pincode))
-        conn.commit()
-
-        return jsonify({"message": "Signup successful!"}), 201
+        try:
+            cursor.execute("""
+                INSERT INTO users (username, email, phone, password_hash, full_name, dob, address, city, area, pincode)
+                VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s)
+            """, (username, email, phone, hashed_pw, full_name, dob, address, city, area, pincode))
+            conn.commit()
+            return jsonify({"message": "Signup successful!"}), 201
+        except mysql.connector.Error as err:
+            if err.errno == 1062:  # Duplicate entry
+                if "users.phone" in str(err):
+                    return jsonify({"error": "Phone number already in use"}), 400
+                if "users.email" in str(err):
+                    return jsonify({"error": "Email already in use"}), 400
+                if "users.username" in str(err):
+                    return jsonify({"error": "Username already in use"}), 400
+            raise err
 
     except mysql.connector.Error as err:
         print("MYSQL ERROR:", err)
         return jsonify({"error": str(err)}), 400
     except Exception as e:
-        print("ERROR:", e)
-        return jsonify({"error": "Something went wrong"}), 500
+        print("ERROR:", traceback.format_exc())
+        return jsonify({"error": str(e)}), 500
     finally:
         try:
             cursor.close()
@@ -1261,6 +1250,10 @@ def home():
 
 
 if __name__ == "__main__":
-    # ⭐ IMPORTANT: Use socketio.run() instead of app.run()
-    print("Starting Flask-SocketIO server on http://localhost:5000...")
-    socketio.run(app, host="127.0.0.1", port=5000, debug=True)
+    try:
+        # ⭐ IMPORTANT: Use socketio.run() instead of app.run()
+        print("Starting Flask-SocketIO server on http://127.0.0.1:5000...")
+        socketio.run(app, host="127.0.0.1", port=5000, debug=True)
+    except Exception as e:
+        print(f"FATAL ERROR: {e}")
+        traceback.print_exc()
